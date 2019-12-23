@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Oleksand Atamanskyi on 23.12.2019.
 //
@@ -117,11 +117,11 @@ open class BalloonMarker: MarkerImage
                 y: point.y))
             context.addLine(to: CGPoint(
                 x: rect.origin.x + (rect.size.width - arrowSize.width) / 2.0,
-                y: rect.origin.y + arrowSize.height))
+                y: rect.origin.y + arrowSize.height - 4))
             context.addLine(to: CGPoint(
                 x: rect.origin.x + (rect.size.width + arrowSize.width) / 2.0,
-                y: rect.origin.y + arrowSize.height))
-            let roundedRect = CGRect(x: x, y: rect.origin.y + arrowSize.height + 4, width: rect.width, height: rect.height)
+                y: rect.origin.y + arrowSize.height - 4))
+            let roundedRect = CGRect(x: x, y: rect.origin.y + arrowSize.height - 4, width: rect.width, height: rect.height)
             let bezierPath = UIBezierPath(roundedRect: roundedRect, cornerRadius: 5)
             context.addPath(bezierPath.cgPath)
             context.drawPath(using: .fill)
@@ -135,12 +135,12 @@ open class BalloonMarker: MarkerImage
                 y: point.y))
             context.addLine(to: CGPoint(
                 x: rect.origin.x + (rect.size.width - arrowSize.width) / 2.0,
-                y: rect.origin.y + rect.size.height - arrowSize.height))
+                y: rect.origin.y + rect.size.height - arrowSize.height - 4))
             context.addLine(to: CGPoint(
                 x: rect.origin.x + (rect.size.width + arrowSize.width) / 2.0,
-                y: rect.origin.y + rect.size.height - arrowSize.height))
+                y: rect.origin.y + rect.size.height - arrowSize.height - 4))
 
-            let roundedRect = CGRect(x: x, y: rect.origin.y - arrowSize.height + 4, width: rect.width, height: rect.height)
+            let roundedRect = CGRect(x: x, y: rect.origin.y - arrowSize.height - 4, width: rect.width, height: rect.height)
             let bezierPath = UIBezierPath(roundedRect: roundedRect, cornerRadius: 5)
             context.addPath(bezierPath.cgPath)
             context.drawPath(using: .fill)
@@ -159,10 +159,10 @@ open class BalloonMarker: MarkerImage
         if isLastValue {
             rect.origin.x -= 25
         }
-        rect.origin.y += 0
+        rect.origin.y += -4
         dateLabel.draw(in: rect, withAttributes: _dateLabelDrawAttributes)
 
-        rect.origin.y += 15
+        rect.origin.y += 11
         hourLabel.draw(in: rect, withAttributes: _hourLabelDrawAttributes)
 
         UIGraphicsPushContext(context)
