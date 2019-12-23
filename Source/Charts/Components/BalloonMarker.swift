@@ -121,7 +121,7 @@ open class BalloonMarker: MarkerImage
             context.addLine(to: CGPoint(
                 x: rect.origin.x + (rect.size.width + arrowSize.width) / 2.0,
                 y: rect.origin.y + arrowSize.height))
-            let roundedRect = CGRect(x: x, y: rect.origin.y + arrowSize.height, width: rect.width, height: rect.height)
+            let roundedRect = CGRect(x: x, y: rect.origin.y + arrowSize.height + 4, width: rect.width, height: rect.height)
             let bezierPath = UIBezierPath(roundedRect: roundedRect, cornerRadius: 5)
             context.addPath(bezierPath.cgPath)
             context.drawPath(using: .fill)
@@ -140,7 +140,7 @@ open class BalloonMarker: MarkerImage
                 x: rect.origin.x + (rect.size.width + arrowSize.width) / 2.0,
                 y: rect.origin.y + rect.size.height - arrowSize.height))
 
-            let roundedRect = CGRect(x: x, y: rect.origin.y - arrowSize.height, width: rect.width, height: rect.height)
+            let roundedRect = CGRect(x: x, y: rect.origin.y - arrowSize.height + 4, width: rect.width, height: rect.height)
             let bezierPath = UIBezierPath(roundedRect: roundedRect, cornerRadius: 5)
             context.addPath(bezierPath.cgPath)
             context.drawPath(using: .fill)
