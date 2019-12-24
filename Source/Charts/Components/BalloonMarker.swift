@@ -117,11 +117,11 @@ open class BalloonMarker: MarkerImage
                 y: point.y))
             context.addLine(to: CGPoint(
                 x: rect.origin.x + (rect.size.width - arrowSize.width) / 2.0,
-                y: rect.origin.y + arrowSize.height - 5))
+                y: rect.origin.y + arrowSize.height - 4))
             context.addLine(to: CGPoint(
                 x: rect.origin.x + (rect.size.width + arrowSize.width) / 2.0,
-                y: rect.origin.y + arrowSize.height - 5))
-            let roundedRect = CGRect(x: x, y: rect.origin.y + arrowSize.height - 5, width: rect.width, height: rect.height)
+                y: rect.origin.y + arrowSize.height - 4))
+            let roundedRect = CGRect(x: x, y: rect.origin.y + arrowSize.height - 4, width: rect.width, height: rect.height)
             let bezierPath = UIBezierPath(roundedRect: roundedRect, cornerRadius: 5)
             context.addPath(bezierPath.cgPath)
             context.drawPath(using: .fill)
@@ -138,9 +138,9 @@ open class BalloonMarker: MarkerImage
                 y: rect.origin.y + rect.size.height - arrowSize.height - 4))
             context.addLine(to: CGPoint(
                 x: rect.origin.x + (rect.size.width + arrowSize.width) / 2.0,
-                y: rect.origin.y + rect.size.height - arrowSize.height - 5))
+                y: rect.origin.y + rect.size.height - arrowSize.height - 4))
 
-            let roundedRect = CGRect(x: x, y: rect.origin.y - arrowSize.height - 5, width: rect.width, height: rect.height)
+            let roundedRect = CGRect(x: x, y: rect.origin.y - arrowSize.height - 4, width: rect.width, height: rect.height)
             let bezierPath = UIBezierPath(roundedRect: roundedRect, cornerRadius: 5)
             context.addPath(bezierPath.cgPath)
             context.drawPath(using: .fill)

@@ -11,16 +11,17 @@ import Foundation
 #endif
 
 public protocol IAxisValueExtendedFormatter: IAxisValueFormatter {
-    func isFirstValue(_ value: String) -> Bool
-    func isLastValue(_ value: String) -> Bool
+    func isFirstValue(_ value: Double) -> Bool
+    func isLastValue(_ value: Double) -> Bool
 }
 
 public class XYMarkerView: BalloonMarker {
     public var xAxisValueFormatter: IAxisValueExtendedFormatter
+    private var data: [Double] = []
     fileprivate var yFormatter = NumberFormatter()
 
     public init(color: UIColor, firstFont: UIFont, secondFont: UIFont, firstTextColor: UIColor, secondTextColor: UIColor, insets: UIEdgeInsets,
-                xAxisValueFormatter: IAxisValueExtendedFormatter) {
+                xAxisValueFormatter: IAxisValueExtendedFormatter, data: [Double]) {
         self.xAxisValueFormatter = xAxisValueFormatter
         yFormatter.minimumFractionDigits = 1
         yFormatter.maximumFractionDigits = 2
@@ -30,8 +31,8 @@ public class XYMarkerView: BalloonMarker {
     public override func refreshContent(entry: ChartDataEntry, highlight: Highlight) {
         let x = xAxisValueFormatter.stringForValue(entry.x, axis: XAxis())
         let string = "\(x)"
-        isFirstValue = xAxisValueFormatter.isFirstValue(x)
-        isLastValue = xAxisValueFormatter.isLastValue(x)
+        isFirstValue = xAxisValueFormatter.isFirstValue(data.first ?? 0.0)
+        isLastValue = xAxisValueFormatter.isLastValue(data.last ?? 0.0)
         setDateLabel(string)
         setHourLabel(entry.y.hoursMinutes())
     }
