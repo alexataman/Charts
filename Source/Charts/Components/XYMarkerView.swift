@@ -12,8 +12,6 @@ import Foundation
 
 @objc
 public protocol IAxisValueExtendedFormatter: IAxisValueFormatter {
-    func isFirstValue(_ value: Double) -> Bool
-    func isLastValue(_ value: Double) -> Bool
     func markerStringForValue(_ value: Double) -> String
 }
 
@@ -34,8 +32,8 @@ public class XYMarkerView: BalloonMarker {
     public override func refreshContent(entry: ChartDataEntry, highlight: Highlight) {
         let x = xAxisValueFormatter.markerStringForValue(entry.x)
         let string = "\(x)"
-        isFirstValue = xAxisValueFormatter.isFirstValue(data.first ?? 0.0)
-        isLastValue = xAxisValueFormatter.isLastValue(data.last ?? 0.0)
+        isFirstValue = data.first == entry.x
+        isLastValue = data.last == entry.x
         setDateLabel(string)
         setHourLabel(entry.y.hoursMinutes())
     }
