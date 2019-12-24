@@ -12,8 +12,21 @@
 import Foundation
 
 @objc(ChartDefaultAxisValueFormatter)
-open class DefaultAxisValueFormatter: NSObject, IAxisValueFormatter
+open class DefaultAxisValueFormatter: NSObject, IAxisValueExtendedFormatter
 {
+    
+    public func markerStringForValue(_ value: Double) -> String {
+        return ""
+    }
+    
+    public func isFirstValue(_ value: Double) -> Bool {
+        return false
+    }
+    
+    public func isLastValue(_ value: Double) -> Bool {
+        return false
+    }
+    
     public typealias Block = (
         _ value: Double,
         _ axis: AxisBase?) -> String
