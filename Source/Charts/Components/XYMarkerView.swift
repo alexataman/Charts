@@ -17,11 +17,11 @@ public protocol IAxisValueExtendedFormatter: IAxisValueFormatter {
 
 public class XYMarkerView: BalloonMarker {
     public var xAxisValueFormatter: IAxisValueExtendedFormatter
-    private var data: [Double] = []
+    private var data: [String] = []
     fileprivate var yFormatter = NumberFormatter()
 
     public init(color: UIColor, firstFont: UIFont, secondFont: UIFont, firstTextColor: UIColor, secondTextColor: UIColor, insets: UIEdgeInsets,
-                xAxisValueFormatter: IAxisValueExtendedFormatter, data: [Double]) {
+                xAxisValueFormatter: IAxisValueExtendedFormatter, data: [String]) {
         self.xAxisValueFormatter = xAxisValueFormatter
         self.data = data
         yFormatter.minimumFractionDigits = 1
@@ -31,10 +31,9 @@ public class XYMarkerView: BalloonMarker {
 
     public override func refreshContent(entry: ChartDataEntry, highlight: Highlight) {
         let x = xAxisValueFormatter.markerStringForValue(entry.x)
-        let string = "\(x)"
-        isFirstValue = data.first == entry.x
-        isLastValue = data.last == entry.x
-        setDateLabel(string)
+        isFirstValue = data.first == x
+        isLastValue = data.last == x
+        setDateLabel(x)
         setHourLabel(entry.y.hoursMinutes())
     }
 

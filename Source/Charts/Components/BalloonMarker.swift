@@ -159,10 +159,10 @@ open class BalloonMarker: MarkerImage
         if isLastValue {
             rect.origin.x -= 25
         }
-        rect.origin.y += -4
+        rect.origin.y += offset.y > 0 ? -2 : -6
         dateLabel.draw(in: rect, withAttributes: _dateLabelDrawAttributes)
 
-        rect.origin.y += 11
+        rect.origin.y += offset.y > 0 ? 16 : 15
         hourLabel.draw(in: rect, withAttributes: _hourLabelDrawAttributes)
 
         UIGraphicsPushContext(context)
