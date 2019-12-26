@@ -25,7 +25,7 @@ extension Double {
 
 extension Double {
     func hoursMinutes() -> String {
-        let split = splitIntoParts(decimalPlaces: 2, round: true)
+        let split = splitIntoParts(decimalPlaces: 3, round: true)
         return "\(split.leftPart)h \(split.rightPart)m"
     }
 
